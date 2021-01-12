@@ -99,10 +99,10 @@ export default {
   },
   computed: {
     activeTodos() {
-      return this.todos.filter((t) => !t.isDone);
+      return this.todos.filter((todo) => !todo.isDone);
     },
     completedTodos() {
-      return this.todos.filter((t) => t.isDone);
+      return this.todos.filter((todo) => todo.isDone);
     },
   },
   watch: {

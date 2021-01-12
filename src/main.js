@@ -6,5 +6,5 @@ import "@/assets/todo.css";
 Vue.config.productionTip = false;
 
 new Vue({
-  render: (h) => h(App),
+  render: (createApp) => createApp(App),
 }).$mount("#app");
