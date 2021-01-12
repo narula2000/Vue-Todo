@@ -18,7 +18,7 @@
             :class="{ completed: todo.isDone, editing: todo === editing }"
           >
             <div class="view">
-              <input class="toggle" type="checkbox" v-model="todo.isDone"/>
+              <input class="toggle" type="checkbox" v-model="todo.isDone" />
               <label @dblclick="startEditing(todo)">{{ todo.text }}</label>
               <button class="destroy" @click="destroyTodo(todo)"></button>
             </div>
@@ -46,7 +46,7 @@
       </footer>
     </section>
     <footer class="info">
-        <p>Click to complete a todo</p>
+      <p>Click to complete a todo</p>
       <p>Double-click to edit a todo</p>
       <p>Created by Vikrom Narula!</p>
       <p>Part of Front End assignment</p>
