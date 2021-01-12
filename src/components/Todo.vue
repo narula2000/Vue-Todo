@@ -46,12 +46,10 @@
       </footer>
     </section>
     <footer class="info">
+        <p>Click to complete a todo</p>
       <p>Double-click to edit a todo</p>
-      <!-- Remove the below line ↓ -->
-      <p>Template by <a href="http://sindresorhus.com">Sindre Sorhus</a></p>
-      <!-- Change this out with your name and url ↓ -->
-      <p>Created by <a href="http://todomvc.com">you</a></p>
-      <p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
+      <p>Created by Vikrom Narula!</p>
+      <p>Part of Front End assignment</p>
     </footer>
   </div>
 </template>
