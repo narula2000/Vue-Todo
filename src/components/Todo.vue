@@ -10,7 +10,7 @@
           autofocus
         />
       </header>
-      <Tasks :tasks="todos" />
+      <tasks :tasks="todos" />
         <footer class="footer" v-if="todos.length">
           <span class="todo-count">
             <strong>{{ activeTodos.length }}</strong> item(s) left</span
@@ -24,23 +24,20 @@
           </button>
         </footer>
     </section>
-    <footer class="info">
-      <p>Click to complete a todo</p>
-      <p>Double-click to edit a todo</p>
-      <p>Created by Vikrom Narula!</p>
-      <p>Part of Front End assignment</p>
-    </footer>
+    <footnote />
   </div>
 </template>
 
 <script>
 import Tasks from "./Task.vue";
+import Footnote from "./Footnote.vue";
 
 const LOCAL_STORAGE_KEY = "todo-app-vue";
 
 export default {
   components: {
     Tasks,
+    Footnote,
   },
   data() {
     return {
