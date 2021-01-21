@@ -10,40 +10,21 @@
           autofocus
         />
       </header>
-      <section class="main" v-if="todos.length">
-        <ul class="todo-list">
-          <li
-            v-for="todo in todos"
-            v-bind:key="todo.id"
-            :class="{ completed: todo.isDone, editing: todo === editing }"
+      <Task :list="todos" />
+      <section>
+        <footer class="footer" v-if="todos.length">
+          <span class="todo-count">
+            <strong>{{ activeTodos.length }}</strong> item(s) left</span
           >
-            <div class="view">
-              <input class="toggle" type="checkbox" v-model="todo.isDone" />
-              <label @dblclick="startEditing(todo)">{{ todo.text }}</label>
-              <button class="destroy" @click="destroyTodo(todo)"></button>
-            </div>
-            <input
-              class="edit"
-              @keyup.esc="cancelEditing"
-              @keyup.enter="finishEditing"
-              @blur="finishEditing"
-              :value="todo.text"
-            />
-          </li>
-        </ul>
+          <button
+            class="clear-completed"
+            @click="clearCompleted"
+            v-show="completedTodos.length"
+          >
+            Clear completed
+          </button>
+        </footer>
       </section>
-      <footer class="footer" v-if="todos.length">
-        <span class="todo-count">
-          <strong>{{ activeTodos.length }}</strong> item(s) left</span
-        >
-        <button
-          class="clear-completed"
-          @click="clearCompleted"
-          v-show="completedTodos.length"
-        >
-          Clear completed
-        </button>
-      </footer>
     </section>
     <footer class="info">
       <p>Click to complete a todo</p>
@@ -55,9 +36,12 @@
 </template>
 
 <script>
+import Task from "./Task.vue";
 const LOCAL_STORAGE_KEY = "todo-app-vue";
 export default {
-  name: "todo",
+  components: {
+    Task,
+  },
   data() {
     return {
       title: "Change this!",
@@ -74,24 +58,6 @@ export default {
       const textbox = event.target;
       this.todos.push({ text: textbox.value.trim(), isDone: false });
       textbox.value = "";
-    },
-    startEditing(todo) {
-      this.editing = todo;
-    },
-    finishEditing(event) {
-      if (!this.editing) {
-        return;
-      }
-      const textbox = event.target;
-      this.editing.text = textbox.value.trim();
-      this.editing = null;
-    },
-    cancelEditing() {
-      this.editing = null;
-    },
-    destroyTodo(todo) {
-      const index = this.todos.indexOf(todo);
-      this.todos.splice(index, 1);
     },
     clearCompleted() {
       this.todos = this.activeTodos;
