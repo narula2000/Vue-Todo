@@ -1,23 +1,23 @@
 <template>
   <div>
-    <section class="main" v-if="list.length">
+    <section class="main" v-if="tasks.length">
       <ul class="todo-list">
         <li
-          v-for="todo in list"
-          v-bind:key="todo.id"
-          :class="{ completed: todo.isDone, editing: todo === editing }"
+          v-for="task in tasks"
+          v-bind:key="task.id"
+          :class="{ completed: task.isDone, editing: task === editing }"
         >
           <div class="view">
-            <input class="toggle" type="checkbox" v-model="todo.isDone" />
-            <label @dblclick="startEditing(todo)">{{ todo.text }}</label>
-            <button class="destroy" @click="destroyTodo(todo)"></button>
+            <input class="toggle" type="checkbox" v-model="task.isDone" />
+            <label @dblclick="startEditing(task)">{{ task.text }}</label>
+            <button class="destroy" @click="destroyTodo(task)"></button>
           </div>
           <input
             class="edit"
             @keyup.esc="cancelEditing"
             @keyup.enter="finishEditing"
             @blur="finishEditing"
-            :value="todo.text"
+            :value="task.text"
           />
         </li>
       </ul>
@@ -26,21 +26,20 @@
 </template>
 
 <script>
-const LOCAL_STORAGE_KEY = "todo-app-vue";
 export default {
-  props: ["list"],
+  props: ["tasks"],
   data() {
     return {
       editing: null,
     };
   },
   methods: {
-    destroyTodo(todo) {
-      const index = this.list.indexOf(todo);
-      this.list.splice(index, 1);
+    destroyTodo(task) {
+      const index = this.tasks.indexOf(task);
+      this.tasks.splice(index, 1);
     },
-    startEditing(todo) {
-      this.editing = todo;
+    startEditing(task) {
+      this.editing = task;
     },
     finishEditing(event) {
       if (!this.editing) {
@@ -52,14 +51,6 @@ export default {
     },
     cancelEditing() {
       this.editing = null;
-    },
-  },
-  watch: {
-    todos: {
-      deep: true,
-      handler(newValue) {
-        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(newValue));
-      },
     },
   },
 };

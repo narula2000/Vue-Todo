@@ -10,8 +10,7 @@
           autofocus
         />
       </header>
-      <Task :list="todos" />
-      <section>
+      <Tasks :tasks="todos" />
         <footer class="footer" v-if="todos.length">
           <span class="todo-count">
             <strong>{{ activeTodos.length }}</strong> item(s) left</span
@@ -24,7 +23,6 @@
             Clear completed
           </button>
         </footer>
-      </section>
     </section>
     <footer class="info">
       <p>Click to complete a todo</p>
@@ -36,11 +34,13 @@
 </template>
 
 <script>
-import Task from "./Task.vue";
+import Tasks from "./Task.vue";
+
 const LOCAL_STORAGE_KEY = "todo-app-vue";
+
 export default {
   components: {
-    Task,
+    Tasks,
   },
   data() {
     return {
