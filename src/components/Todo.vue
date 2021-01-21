@@ -11,18 +11,19 @@
         />
       </header>
       <tasks :tasks="todos" />
-        <footer class="footer" v-if="todos.length">
-          <span class="todo-count">
-            <strong>{{ activeTodos.length }}</strong> item(s) left</span
-          >
-          <button
-            class="clear-completed"
-            @click="clearCompleted"
-            v-show="completedTodos.length"
-          >
-            Clear completed
-          </button>
-        </footer>
+      <footer class="footer" v-if="todos.length">
+        <span class="todo-count">
+          <strong>{{ activeTodos.length }}</strong>
+          item(s) left
+        </span>
+        <button
+          class="clear-completed"
+          @click="clearCompleted"
+          v-show="completedTodos.length"
+        >
+          Clear completed
+        </button>
+      </footer>
     </section>
     <footnote />
   </div>
