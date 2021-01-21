@@ -11,19 +11,12 @@
         />
       </header>
       <tasks :tasks="todos" />
-      <footer class="footer" v-if="todos.length">
-        <span class="todo-count">
-          <strong>{{ activeTodos.length }}</strong>
-          item(s) left
-        </span>
-        <button
-          class="clear-completed"
-          @click="clearCompleted"
-          v-show="completedTodos.length"
-        >
-          Clear completed
-        </button>
-      </footer>
+      <todo-footer
+        v-if="todos.length"
+        :activeTodoCount="activeTodos.length"
+        :compeleteTodoCount="completedTodos.length"
+        @todo-action-clear="clearCompleted"
+      />
     </section>
     <footnote />
   </div>
@@ -32,6 +25,7 @@
 <script>
 import Tasks from "./Task.vue";
 import Footnote from "./Footnote.vue";
+import TodoFooter from "./TodoFooter.vue";
 
 const LOCAL_STORAGE_KEY = "todo-app-vue";
 
@@ -39,6 +33,7 @@ export default {
   components: {
     Tasks,
     Footnote,
+    TodoFooter,
   },
   data() {
     return {
