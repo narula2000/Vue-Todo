@@ -23,11 +23,11 @@
 </template>
 
 <script>
-import Tasks from "./Task.vue";
-import Footnote from "./Footnote.vue";
-import TodoFooter from "./TodoFooter.vue";
+import Tasks from './Task.vue';
+import Footnote from './Footnote.vue';
+import TodoFooter from './TodoFooter.vue';
 
-const LOCAL_STORAGE_KEY = "todo-app-vue";
+const LOCAL_STORAGE_KEY = 'todo-app-vue';
 
 export default {
   components: {
@@ -37,11 +37,11 @@ export default {
   },
   data() {
     return {
-      title: "Change this!",
+      title: 'Change this!',
       todos: JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)) || [
-        { text: "Learn JavaScript ES6+ goodies", isDone: true },
-        { text: "Learn Vue", isDone: false },
-        { text: "Build something awesome", isDone: false },
+        { text: 'Learn JavaScript ES6+ goodies', isDone: true },
+        { text: 'Learn Vue', isDone: false },
+        { text: 'Build something awesome', isDone: false },
       ],
       editing: null,
     };
@@ -50,7 +50,7 @@ export default {
     createTodo(event) {
       const textbox = event.target;
       this.todos.push({ text: textbox.value.trim(), isDone: false });
-      textbox.value = "";
+      textbox.value = '';
     },
     clearCompleted() {
       this.todos = this.activeTodos;

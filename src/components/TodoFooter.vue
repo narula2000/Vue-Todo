@@ -16,15 +16,15 @@
 
 <script>
 export default {
-    props: {
-        activeTodoCount: {
-            type: Number,
-            required: true
-        },
-        compeleteTodoCount: {
-            type: Number,
-            required: true
-        }
-    }
-}
+  props: {
+    activeTodoCount: {
+      type: Number,
+      required: true,
+    },
+    compeleteTodoCount: {
+      type: Number,
+      required: true,
+    },
+  },
+};
 </script>

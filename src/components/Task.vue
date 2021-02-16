@@ -27,7 +27,7 @@
 
 <script>
 export default {
-  props: ["tasks"],
+  props: ['tasks'],
   data() {
     return {
       editing: null,
